@@ -1,0 +1,1 @@
+# no-bs-java-springboot
