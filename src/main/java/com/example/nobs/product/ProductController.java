@@ -11,6 +11,9 @@ public class ProductController {
     // Dependency Injection
     @Autowired
     private CreateProductService createProductService;
+    private GetProductService getProductService;
+    private UpdateProductService updateProductService;
+    private DeleteProductService deleteProductService;
 
     @PostMapping
     public ResponseEntity<String> createProduct() {
@@ -19,16 +22,16 @@ public class ProductController {
 
     @GetMapping
     public ResponseEntity<String> getProduct(){
-        return ResponseEntity.status(HttpStatus.OK).body("Got Product");
+        return getProductService.execute();
     }
 
     @PutMapping
     public ResponseEntity<String> updateProduct(){
-        return ResponseEntity.status(HttpStatus.OK).body("Product Updated");
+        return updateProductService.execute();
     }
 
     @DeleteMapping
     public ResponseEntity<String> deleteProduct(){
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Product Deleted");
+        return deleteProductService.execute();
     }
 }
